@@ -6,7 +6,7 @@ es = Elasticsearch(hosts=["http://localhost:9200"])
 
 @app.route('/')
 def home():
-    return "Welcome to the Flask Search App"
+    return "Welcome to our 5914 project!"
 
 
 @app.route('/search', methods=['GET'])
