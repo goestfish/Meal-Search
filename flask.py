@@ -4,6 +4,10 @@ from elasticsearch import Elasticsearch
 app = Flask(__name__)
 es = Elasticsearch(hosts=["http://localhost:9200"])
 
+@app.route('/')
+def home():
+    return "Welcome to the Flask Search App"
+
 
 @app.route('/search', methods=['GET'])
 def search():
