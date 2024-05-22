@@ -1,3 +1,10 @@
+from flask import Flask, request, jsonify
+from elasticsearch import Elasticsearch
+
+app = Flask(__name__)
+es = Elasticsearch(hosts=["http://localhost:9200"])
+
+
 @app.route('/search', methods=['GET'])
 def search():
     query = request.args.get('q')
