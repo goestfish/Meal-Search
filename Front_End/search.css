@@ -55,6 +55,16 @@ body {
     outline: none;
 }
 
+.search-bar button {
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
 .categories {
     display: grid;
     grid-template-columns: repeat(3, 200px);
