@@ -14,7 +14,6 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        # 无论用户名和密码是什么，都重定向到搜索页面
         return redirect(url_for('index'))
     return render_template('login.html')
 
@@ -46,7 +45,7 @@ def list_meals():
             "query": {
                 "match_all": {}
             },
-            "size": 1000  # Adjust the size according to your data volume
+            "size": 1000
         }
     )
     hits = response['hits']['hits']
