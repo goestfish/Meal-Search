@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+</head>
+<body>
+    <h1>Search Results for "{{ query }}"</h1>
+    <div id="results">
+        {% if hits %}
+            {% for hit in hits %}
+                <div>
+                    <h2>{{ hit._source.strMeal }}</h2>
+                    <img src="{{ hit._source.strMealThumb }}" alt="{{ hit._source.strMeal }}" width="200">
+                    <p>{{ hit._source.strInstructions }}</p>
+                    {% if hit._source.strYoutube %}
+                        <p>Video: <a href="{{ hit._source.strYoutube }}" target="_blank">{{ hit._source.strYoutube }}</a></p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No results found.</p>
+        {% endif %}
+    </div>
+    <button onclick="window.location.href='/'">Return to Search</button>
+</body>
+</html>

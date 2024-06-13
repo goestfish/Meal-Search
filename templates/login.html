@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dish Discoverer Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="login-box">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='image/logo.png') }}" alt="Dish Discoverer Logo">
+                <h1>Dish Discoverer</h1>
+            </div>
+            <form action="{{ url_for('login') }}" method="post">
+                <div class="textbox">
+                    <input type="text" name="username" placeholder="Username, email, or mobile" required>
+                </div>
+                <div class="textbox">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="options">
+                    <label>
+                        <input type="checkbox" name="remember"> Remember Me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn">NEXT</button>
+                <button type="button" class="btn create-account">Create An Account</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

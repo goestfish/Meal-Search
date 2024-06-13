@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: url('../image/A_soft\,_welcoming_background_image_1920x1080.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 500px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.logo img {
+    max-width: 100px;
+    margin-bottom: 20px;
+}
+
+.logo h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.textbox {
+    margin-bottom: 15px;
+}
+
+.textbox input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.options a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.btn {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #007BFF;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.btn.create-account {
+    background: #6c757d;
+}
