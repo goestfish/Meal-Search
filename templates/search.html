@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dish Discoverer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='image/logo.png') }}" alt="Dish Discoverer Logo">
+            <h1>Dish Discoverer</h1>
+        </div>
+        <div class="logout">
+            <a href="{{ url_for('logout') }}">Log Out</a>
+        </div>
+    </div>
+    <div class="search-bar">
+        <form action="/search" method="get">
+            <input type="text" name="q" placeholder="Search for a dish" required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div class="categories">
+        <div class="category">
+            <img src="{{ url_for('static', filename='image/Breakfast.jpg') }}" alt="Breakfast">
+            <p>Breakfast</p>
+        </div>
+        <div class="category">
+            <img src="{{ url_for('static', filename='image/Meal.jpg') }}" alt="Meal">
+            <p>Meal</p>
+        </div>
+        <div class="category">
+            <img src="{{ url_for('static', filename='image/Dessert.jpg') }}" alt="Dessert">
+            <p>Dessert</p>
+        </div>
+        <div class="category">
+            <img src="{{ url_for('static', filename='image/Vege.jpg') }}" alt="Vege">
+            <p>Vege</p>
+        </div>
+        <div class="category">
+            <img src="{{ url_for('static', filename='image/Meat.jpg') }}" alt="Protein">
+            <p>Protein</p>
+        </div>
+        <div class="category">
+            <img src="{{ url_for('static', filename='image/Drink.jpg') }}" alt="Drink">
+            <p>Drink</p>
+        </div>
+    </div>
+</body>
+</html>
