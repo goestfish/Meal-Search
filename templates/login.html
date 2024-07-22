@@ -13,6 +13,10 @@
                 <img src="{{ url_for('static', filename='image/logo.png') }}" alt="Dish Discoverer Logo">
                 <h1>Dish Discoverer</h1>
             </div>
+            <div class="recommendations">
+                <h3>Recommendation:</h3>
+                <p>{{ ai_recommendation }}</p>
+            </div>
             {% with messages = get_flashed_messages() %}
             {% if messages %}
             <div class="flash-messages">

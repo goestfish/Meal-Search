@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from elasticsearch import Elasticsearch
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
+from reconmmendation import generate_recommendation
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
@@ -39,19 +40,17 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    ai_recommendation = generate_recommendation()
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         user = User.query.filter_by(username=username).first()
-        if user:
-            if user.check_password(password):
-                # session['username'] = username  # 设置会话
-                return render_template('search.html')
-            else:
-                flash('Incorrect password. Please try again.')
+        if user and user.check_password(password):
+            # session['username'] = username  # 设置会话
+            return redirect(url_for('search'))
         else:
-            flash('Username not registered. Please sign up.')
-    return render_template('login.html')
+            flash('Incorrect username or password. Please try again.')
+    return render_template('login.html', ai_recommendation=ai_recommendation)
 
 
 @app.route('/register', methods=['GET', 'POST'])
