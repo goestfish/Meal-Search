@@ -1,4 +1,4 @@
-5914 project
+A website to get your meal details!
 
 run main.py to open the web
 
