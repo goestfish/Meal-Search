@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dish Discoverer Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <div class="logo">
+                <img src="{{ url_for('static', filename='image/logo.png') }}" alt="Dish Discoverer Logo">
+                <h1>Dish Discoverer</h1>
+            </div>
+            <div class="recommendations">
+                <h3>Recommendation:</h3>
+                <p>{{ ai_recommendation }}</p>
+            </div>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="flash-messages">
+                <ul>
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% endwith %}
+            <form action="{{ url_for('login') }}" method="post">
+                <div class="textbox">
+                    <input type="text" name="username" placeholder="Username, email, or mobile" required value="{{ request.form['username'] if request.form else '' }}">
+                </div>
+                <div class="textbox">
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="options">
+                    <label>
+                        <input type="checkbox" name="remember"> Remember Me
+                    </label>
+                    <a href="{{ url_for('forgot_password') }}" class="forgot-password">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn">NEXT</button>
+                <button type="button" class="btn create-account" onclick="window.location.href='{{ url_for('register') }}'">Create An Account</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

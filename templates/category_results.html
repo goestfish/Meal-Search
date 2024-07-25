@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='image/logo.png') }}" alt="Dish Discoverer Logo">
+            <h1>Dish Discoverer</h1>
+        </div>
+        <div class="logout">
+            <a href="{{ url_for('logout') }}">Log Out</a>
+        </div>
+    </div>
+    <div class="container category-results">
+        <h2>Results for "{{ query }}"</h2>
+        <ul>
+            {% if hits %}
+                {% for hit in hits %}
+                    <li><a href="{{ url_for('search_recipe', q=hit['_source']['strMeal']) }}">{{ hit['_source']['strMeal'] }}</a></li>
+                {% endfor %}
+            {% else %}
+                <p>No results found.</p>
+            {% endif %}
+        </ul>
+        <a href="{{ url_for('search') }}" class="return-button">Back to Search</a>
+    </div>
+</body>
+</html>

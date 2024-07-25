@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}">
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='image/logo.png') }}" alt="Dish Discoverer Logo">
+            <h1>Dish Discoverer</h1>
+        </div>
+        <div class="logout">
+            <a href="{{ url_for('logout') }}">Log Out</a>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Search Results for "{{ query }}"</h1>
+        <div id="results">
+            {% if hits %}
+                {% for hit in hits %}
+                    <div class="result-item">
+                        <h2>{{ hit._source.strMeal }}</h2>
+                        <img src="{{ hit._source.strMealThumb }}" alt="{{ hit._source.strMeal }}" width="200">
+                        <p>{{ hit._source.strInstructions }}</p>
+                        {% if hit._source.strYoutube %}
+                            <p>Video: <a href="{{ hit._source.strYoutube }}" target="_blank">{{ hit._source.strYoutube }}</a></p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No results found.</p>
+            {% endif %}
+        </div>
+        <button class="return-button" onclick="window.location.href='{{ url_for('search') }}'">Return to Search</button>
+    </div>
+</body>
+</html>
